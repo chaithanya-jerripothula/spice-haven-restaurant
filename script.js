@@ -32,11 +32,8 @@ function addToCart(itemName, price) {
     );
 
     if (existingItem) {
-
         existingItem.quantity += 1;
-
     } else {
-
         cart.push({
             name: itemName,
             price: price,
@@ -87,7 +84,6 @@ function decreaseQuantity(itemName) {
     item.quantity -= 1;
 
     if (item.quantity <= 0) {
-
         cart = cart.filter(
             item => item.name !== itemName
         );
@@ -193,7 +189,6 @@ function updateCart() {
 
 async function placeOrder() {
 
-    // Check cart
     if (cart.length === 0) {
 
         alert(
@@ -203,8 +198,6 @@ async function placeOrder() {
         return;
     }
 
-
-    // Get customer information
     const tableNumber =
         document.getElementById("table-number").value.trim();
 
@@ -215,7 +208,6 @@ async function placeOrder() {
         document.getElementById("special-instructions").value.trim();
 
 
-    // Validate table number
     if (tableNumber === "") {
 
         alert("Please enter your table number.");
@@ -224,7 +216,6 @@ async function placeOrder() {
     }
 
 
-    // Validate customer name
     if (customerName === "") {
 
         alert("Please enter your name.");
@@ -233,12 +224,12 @@ async function placeOrder() {
     }
 
 
-    // Calculate total
     let total = 0;
 
     cart.forEach(item => {
 
-        total += item.price * item.quantity;
+        total +=
+            item.price * item.quantity;
 
     });
 
@@ -261,7 +252,6 @@ async function placeOrder() {
         ]);
 
 
-    // Check for database error
     if (error) {
 
         console.error(
@@ -279,52 +269,28 @@ async function placeOrder() {
 
 
     // ==========================================
-    // ORDER SUCCESS
+    // CUSTOM ORDER SUCCESS POPUP
     // ==========================================
 
-    let message =
-        "Order placed successfully!\n\n" +
-        "Customer: " +
+    const popup =
+        document.getElementById("order-popup");
+
+    const popupMessage =
+        document.getElementById("order-popup-message");
+
+    popupMessage.innerHTML =
+        "<strong>Thank you, " +
         customerName +
-        "\n" +
+        "!</strong><br><br>" +
         "Table: " +
         tableNumber +
-        "\n\n" +
-        "Items:\n";
+        "<br>" +
+        "Total: ₹" +
+        total +
+        "<br><br>" +
+        "Payment: Pay at cashier";
 
-
-    cart.forEach(item => {
-
-        message +=
-            item.name +
-            " × " +
-            item.quantity +
-            " = ₹" +
-            (item.price * item.quantity) +
-            "\n";
-
-    });
-
-
-    message +=
-        "\nTotal: ₹" +
-        total;
-
-
-    if (specialInstructions !== "") {
-
-        message +=
-            "\n\nSpecial Instructions:\n" +
-            specialInstructions;
-    }
-
-
-    message +=
-        "\n\nPayment: Pay at cashier";
-
-
-    // Original working success message
-    alert(message);
+    popup.classList.add("show");
 
 
     // ==========================================
@@ -345,4 +311,17 @@ async function placeOrder() {
     document.getElementById("customer-name").value = "";
 
     document.getElementById("special-instructions").value = "";
+}
+
+
+// ==========================================
+// CLOSE ORDER POPUP
+// ==========================================
+
+function closeOrderPopup() {
+
+    const popup =
+        document.getElementById("order-popup");
+
+    popup.classList.remove("show");
 }
