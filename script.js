@@ -32,8 +32,11 @@ function addToCart(itemName, price) {
     );
 
     if (existingItem) {
+
         existingItem.quantity += 1;
+
     } else {
+
         cart.push({
             name: itemName,
             price: price,
@@ -84,6 +87,7 @@ function decreaseQuantity(itemName) {
     item.quantity -= 1;
 
     if (item.quantity <= 0) {
+
         cart = cart.filter(
             item => item.name !== itemName
         );
@@ -198,6 +202,7 @@ async function placeOrder() {
         return;
     }
 
+
     const tableNumber =
         document.getElementById("table-number").value.trim();
 
@@ -228,8 +233,7 @@ async function placeOrder() {
 
     cart.forEach(item => {
 
-        total +=
-            item.price * item.quantity;
+        total += item.price * item.quantity;
 
     });
 
@@ -269,28 +273,51 @@ async function placeOrder() {
 
 
     // ==========================================
-    // CUSTOM ORDER SUCCESS POPUP
+    // ORDER SUCCESS
     // ==========================================
 
-    const popup =
-        document.getElementById("order-popup");
-
-    const popupMessage =
-        document.getElementById("order-popup-message");
-
-    popupMessage.innerHTML =
-        "<strong>Thank you, " +
+    let message =
+        "Order placed successfully!\n\n" +
+        "Customer: " +
         customerName +
-        "!</strong><br><br>" +
+        "\n" +
         "Table: " +
         tableNumber +
-        "<br>" +
-        "Total: ₹" +
-        total +
-        "<br><br>" +
-        "Payment: Pay at cashier";
+        "\n\n" +
+        "Items:\n";
 
-    popup.classList.add("show");
+
+    cart.forEach(item => {
+
+        message +=
+            item.name +
+            " × " +
+            item.quantity +
+            " = ₹" +
+            (item.price * item.quantity) +
+            "\n";
+
+    });
+
+
+    message +=
+        "\nTotal: ₹" +
+        total;
+
+
+    if (specialInstructions !== "") {
+
+        message +=
+            "\n\nSpecial Instructions:\n" +
+            specialInstructions;
+    }
+
+
+    message +=
+        "\n\nPayment: Pay at cashier";
+
+
+    alert(message);
 
 
     // ==========================================
@@ -311,17 +338,4 @@ async function placeOrder() {
     document.getElementById("customer-name").value = "";
 
     document.getElementById("special-instructions").value = "";
-}
-
-
-// ==========================================
-// CLOSE ORDER POPUP
-// ==========================================
-
-function closeOrderPopup() {
-
-    const popup =
-        document.getElementById("order-popup");
-
-    popup.classList.remove("show");
 }
