@@ -32,11 +32,8 @@ function addToCart(itemName, price) {
     );
 
     if (existingItem) {
-
         existingItem.quantity += 1;
-
     } else {
-
         cart.push({
             name: itemName,
             price: price,
@@ -87,7 +84,6 @@ function decreaseQuantity(itemName) {
     item.quantity -= 1;
 
     if (item.quantity <= 0) {
-
         cart = cart.filter(
             item => item.name !== itemName
         );
@@ -202,7 +198,6 @@ async function placeOrder() {
         return;
     }
 
-
     const tableNumber =
         document.getElementById("table-number").value.trim();
 
@@ -232,9 +227,7 @@ async function placeOrder() {
     let total = 0;
 
     cart.forEach(item => {
-
         total += item.price * item.quantity;
-
     });
 
 
@@ -273,39 +266,50 @@ async function placeOrder() {
 
 
     // ==========================================
-    // SHOW CUSTOM SUCCESS POPUP
+    // ORDER SUCCESS
     // ==========================================
-// ==========================================
-// SHOW CUSTOM SUCCESS POPUP
-// ==========================================
 
-const popup = document.getElementById("order-popup");
-
-const popupMessage =
-    document.getElementById("order-popup-message");
-
-popupMessage.textContent =
-    "Customer: " +
-    customerName +
-    "\n" +
-    "Table: " +
-    tableNumber +
-    "\n\n" +
-    "Total: ₹" +
-    total +
-    "\n\n" +
-    "Payment: Pay at cashier";
-
-popup.classList.add("show");
+    let message =
+        "Order placed successfully!\n\n" +
+        "Customer: " +
+        customerName +
+        "\n" +
+        "Table: " +
+        tableNumber +
+        "\n\n" +
+        "Items:\n";
 
 
-// ==========================================
-// CLEAR CART
-// ==========================================
+    cart.forEach(item => {
 
-cart = [];
+        message +=
+            item.name +
+            " × " +
+            item.quantity +
+            " = ₹" +
+            (item.price * item.quantity) +
+            "\n";
+    });
 
-updateCart();
+
+    message +=
+        "\nTotal: ₹" +
+        total;
+
+
+    if (specialInstructions !== "") {
+
+        message +=
+            "\n\nSpecial Instructions:\n" +
+            specialInstructions;
+    }
+
+
+    message +=
+        "\n\nPayment: Pay at cashier";
+
+
+    alert(message);
 
 
     // ==========================================
@@ -326,17 +330,4 @@ updateCart();
     document.getElementById("customer-name").value = "";
 
     document.getElementById("special-instructions").value = "";
-}
-
-
-// ==========================================
-// CLOSE ORDER POPUP
-// ==========================================
-
-function closeOrderPopup() {
-
-    const popup =
-        document.getElementById("order-popup");
-
-    popup.classList.remove("show");
 }
