@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spice Haven | Restaurant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">Spice Haven</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="welcome-text">WELCOME TO</p>
+
+            <h1>Spice Haven</h1>
+
+            <p>
+                Delicious food, warm hospitality and unforgettable flavors.
+            </p>
+
+            <a href="#menu" class="btn">
+                Explore Our Menu
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about" class="about">
+
+        <div class="section-heading">
+
+            <p>OUR STORY</p>
+
+            <h2>Made With Love</h2>
+
+        </div>
+
+        <p class="about-text">
+
+            At Spice Haven, we bring together fresh ingredients,
+            traditional flavors and modern cooking to create delicious
+            meals for everyone.
+
+            Whether you're joining us for lunch, dinner or a special
+            occasion, we're here to make every visit memorable.
+
+        </p>
+
+    </section>
+
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+
+        <div class="section-heading">
+
+            <p>OUR MENU</p>
+
+            <h2>Popular Dishes</h2>
+
+        </div>
+
+
+      <!-- Chicken Biryani -->
+<div class="menu-card">
+
+    <img src="images/chicken-biryani.jpeg" alt="Chicken Biryani">
+
+    <div class="menu-card-content">
+
+        <h3>Chicken Biryani</h3>
+
+        <p>
+            Fragrant basmati rice with tender chicken
+            and aromatic spices.
+        </p>
+
+        <span>₹280</span>
+
+        <button
+            class="order-btn"
+            onclick="addToCart('Chicken Biryani', 280)">
+            Add to Order
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Paneer Tikka -->
+<div class="menu-card">
+
+    <img
+        src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=800&q=80"
+        alt="Paneer Tikka">
+
+    <div class="menu-card-content">
+
+        <h3>Paneer Tikka</h3>
+
+        <p>
+            Grilled paneer marinated with spices and yogurt.
+        </p>
+
+        <span>₹220</span>
+
+        <button
+            class="order-btn"
+            onclick="addToCart('Paneer Tikka', 220)">
+            Add to Order
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Butter Naan -->
+<!-- Butter Naan -->
+<div class="menu-card">
+
+    <img src="./images/butter naan.jpeg" alt="Butter Naan">
+
+    <div class="menu-card-content">
+
+        <h3>Butter Naan</h3>
+
+        <p>
+            Soft Indian bread finished with delicious butter.
+        </p>
+
+        <span>₹50</span>
+
+        <button
+            class="order-btn"
+            onclick="addToCart('Butter Naan', 50)">
+            Add to Order
+        </button>
+
+    </div>
+
+</div>
+
+<!-- Veg Fried Rice -->
+<div class="menu-card">
+
+    <img
+        src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=80"
+        alt="Veg Fried Rice">
+
+    <div class="menu-card-content">
+
+        <h3>Veg Fried Rice</h3>
+
+        <p>
+            Fresh vegetables tossed with fragrant rice
+            and spices.
+        </p>
+
+        <span>₹180</span>
+
+        <button
+            class="order-btn"
+            onclick="addToCart('Veg Fried Rice', 180)">
+            Add to Order
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Chicken Tandoori -->
+<div class="menu-card">
+
+    <img
+        src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80"
+        alt="Chicken Tandoori">
+
+    <div class="menu-card-content">
+
+        <h3>Chicken Tandoori</h3>
+
+        <p>
+            Juicy chicken marinated in traditional
+            tandoori spices.
+        </p>
+
+        <span>₹320</span>
+
+        <button
+            class="order-btn"
+            onclick="addToCart('Chicken Tandoori', 320)">
+            Add to Order
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Gulab Jamun -->
+<div class="menu-card">
+
+   <div class="menu-card">
+
+    <img src="images/gulab-jamun.jpeg" alt="Gulab Jamun">
+
+    <div class="menu-card-content">
+
+        <h3>Gulab Jamun</h3>
+
+        <p>
+            Soft sweet dumplings served warm with sugar syrup.
+        </p>
+
+        <span>₹100</span>
+
+        <button
+            class="order-btn"
+            onclick="addToCart('Gulab Jamun', 100)">
+            Add to Order
+        </button>
+
+    </div>
+
+</div>
+
+
+    <!-- Order Section -->
+    <section id="order" class="order-section">
+
+        <!-- Order Section -->
+<section id="order" class="order-section">
+
+    <div class="section-heading">
+        <p>YOUR ORDER</p>
+        <h2>Order Summary</h2>
+    </div>
+
+    <!-- Customer Details -->
+    <div class="customer-details">
+
+        <h3>Customer Details</h3>
+
+        <label for="table-number">Table Number</label>
+
+        <input
+            type="number"
+            id="table-number"
+            placeholder="Enter table number"
+            min="1"
+        >
+
+        <label for="customer-name">Your Name</label>
+
+        <input
+            type="text"
+            id="customer-name"
+            placeholder="Enter your name"
+        >
+
+        <label for="special-instructions">
+            Special Instructions (Optional)
+        </label>
+
+        <textarea
+            id="special-instructions"
+            placeholder="Example: Less spicy, no onions..."
+            rows="3"
+        ></textarea>
+
+    </div>
+
+
+    <!-- Cart -->
+    <div id="cart-items" class="cart-items">
+
+        <p class="empty-cart">
+            Your cart is empty.
+        </p>
+
+    </div>
+
+
+    <!-- Total -->
+    <div class="cart-total">
+
+        <strong>
+            Total: ₹<span id="cart-total">0</span>
+        </strong>
+
+    </div>
+
+
+    <!-- Place Order -->
+    <button
+        class="place-order-btn"
+        onclick="placeOrder()">
+
+        Place Order
+
+    </button>
+
+</section>
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+
+        <div class="section-heading">
+
+            <p>OUR SPACE</p>
+
+            <h2>Restaurant Gallery</h2>
+
+        </div>
+
+
+        <div class="gallery-container">
+
+
+            <div class="gallery-box">
+
+                <img
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+                    alt="Delicious food">
+
+            </div>
+
+
+            <div class="gallery-box">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+                    alt="Restaurant dining area">
+
+            </div>
+
+
+            <div class="gallery-box">
+
+                <img
+                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
+                    alt="Restaurant special dish">
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+
+        <div class="section-heading">
+
+            <p>VISIT US</p>
+
+            <h2>Come & Dine With Us</h2>
+
+        </div>
+
+
+        <p>📍 Khammam, Telangana</p>
+
+        <p>📞 +91 98765 43210</p>
+
+
+        <a
+            href="tel:+919876543210"
+            class="btn">
+
+            Call Us
+
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Spice Haven. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
