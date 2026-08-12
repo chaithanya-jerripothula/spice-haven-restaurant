@@ -309,7 +309,14 @@ async function placeOrder() {
         "\n\nPayment: Pay at cashier";
 
 
-    alert(message);
+    const popup = document.getElementById("order-popup");
+
+const popupMessage =
+    document.getElementById("order-popup-message");
+
+popupMessage.textContent = message;
+
+popup.classList.add("show");
 
 
     // ==========================================
@@ -330,4 +337,15 @@ async function placeOrder() {
     document.getElementById("customer-name").value = "";
 
     document.getElementById("special-instructions").value = "";
+}
+// ==========================================
+// CLOSE ORDER POPUP
+// ==========================================
+
+function closeOrderPopup() {
+
+    const popup =
+        document.getElementById("order-popup");
+
+    popup.classList.remove("show");
 }
