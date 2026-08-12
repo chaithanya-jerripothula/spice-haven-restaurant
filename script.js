@@ -193,6 +193,7 @@ function updateCart() {
 
 async function placeOrder() {
 
+    // Check cart
     if (cart.length === 0) {
 
         alert(
@@ -203,6 +204,7 @@ async function placeOrder() {
     }
 
 
+    // Get customer information
     const tableNumber =
         document.getElementById("table-number").value.trim();
 
@@ -213,6 +215,7 @@ async function placeOrder() {
         document.getElementById("special-instructions").value.trim();
 
 
+    // Validate table number
     if (tableNumber === "") {
 
         alert("Please enter your table number.");
@@ -221,6 +224,7 @@ async function placeOrder() {
     }
 
 
+    // Validate customer name
     if (customerName === "") {
 
         alert("Please enter your name.");
@@ -229,11 +233,13 @@ async function placeOrder() {
     }
 
 
+    // Calculate total
     let total = 0;
 
     cart.forEach(item => {
 
-        total += item.price * item.quantity;
+        total +=
+            item.price * item.quantity;
 
     });
 
@@ -256,6 +262,7 @@ async function placeOrder() {
         ]);
 
 
+    // Check for database error
     if (error) {
 
         console.error(
@@ -310,6 +317,7 @@ async function placeOrder() {
         message +=
             "\n\nSpecial Instructions:\n" +
             specialInstructions;
+
     }
 
 
@@ -317,6 +325,7 @@ async function placeOrder() {
         "\n\nPayment: Pay at cashier";
 
 
+    // Original success message
     alert(message);
 
 
