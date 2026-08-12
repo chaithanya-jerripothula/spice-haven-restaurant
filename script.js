@@ -324,7 +324,24 @@ async function placeOrder() {
         "\n\nPayment: Pay at cashier";
 
 
-    alert(message);
+    const popup = document.getElementById("order-popup");
+
+const popupMessage =
+    document.getElementById("order-popup-message");
+
+popupMessage.textContent =
+    "Customer: " +
+    customerName +
+    "\n" +
+    "Table: " +
+    tableNumber +
+    "\n\n" +
+    "Total: ₹" +
+    total +
+    "\n\n" +
+    "Payment: Pay at cashier";
+
+popup.classList.add("show");
 
 
     // Clear cart
@@ -339,4 +356,11 @@ async function placeOrder() {
     document.getElementById("customer-name").value = "";
 
     document.getElementById("special-instructions").value = "";
+}
+function closeOrderPopup() {
+
+    const popup =
+        document.getElementById("order-popup");
+
+    popup.classList.remove("show");
 }
