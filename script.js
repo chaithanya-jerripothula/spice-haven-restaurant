@@ -266,50 +266,47 @@ async function placeOrder() {
 
 
     // ==========================================
-    // ORDER SUCCESS
-    // ==========================================
+   // ORDER SUCCESS
+// ==========================================
 
-    let message =
-        "Order placed successfully!\n\n" +
-        "Customer: " +
-        customerName +
-        "\n" +
-        "Table: " +
-        tableNumber +
-        "\n\n" +
-        "Items:\n";
+let message =
+    "Order placed successfully!\n\n" +
+    "Customer: " +
+    customerName +
+    "\n" +
+    "Table: " +
+    tableNumber +
+    "\n\n" +
+    "Items:\n";
 
-
-    cart.forEach(item => {
-
-        message +=
-            item.name +
-            " × " +
-            item.quantity +
-            " = ₹" +
-            (item.price * item.quantity) +
-            "\n";
-    });
-
+cart.forEach(item => {
 
     message +=
-        "\nTotal: ₹" +
-        total;
+        item.name +
+        " × " +
+        item.quantity +
+        " = ₹" +
+        (item.price * item.quantity) +
+        "\n";
+});
 
+message +=
+    "\nTotal: ₹" +
+    total;
 
-    if (specialInstructions !== "") {
-
-        message +=
-            "\n\nSpecial Instructions:\n" +
-            specialInstructions;
-    }
-
+if (specialInstructions !== "") {
 
     message +=
-        "\n\nPayment: Pay at cashier";
+        "\n\nSpecial Instructions:\n" +
+        specialInstructions;
+}
+
+message +=
+    "\n\nPayment: Pay at cashier";
 
 
-    const popup = document.getElementById("order-popup");
+const popup =
+    document.getElementById("order-popup");
 
 const popupMessage =
     document.getElementById("order-popup-message");
@@ -319,25 +316,27 @@ popupMessage.textContent = message;
 popup.classList.add("show");
 
 
-    // ==========================================
-    // CLEAR CART
-    // ==========================================
+// ==========================================
+// CLEAR CART
+// ==========================================
 
-    cart = [];
+cart = [];
 
-    updateCart();
+updateCart();
 
 
-    // ==========================================
-    // CLEAR CUSTOMER DETAILS
-    // ==========================================
+// ==========================================
+// CLEAR CUSTOMER DETAILS
+// ==========================================
 
-    document.getElementById("table-number").value = "";
+document.getElementById("table-number").value = "";
 
-    document.getElementById("customer-name").value = "";
+document.getElementById("customer-name").value = "";
 
-    document.getElementById("special-instructions").value = "";
+document.getElementById("special-instructions").value = "";
 }
+
+
 // ==========================================
 // CLOSE ORDER POPUP
 // ==========================================
