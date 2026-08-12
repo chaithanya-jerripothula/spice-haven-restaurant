@@ -2,12 +2,11 @@
 // SUPABASE CONNECTION
 // ==========================================
 
-const SUPABASE_URL = "https://tohphrujrnfmffkpvyuu.supabase.co";
+const SUPABASE_URL =
+    "https://tohphrujrnfmffkpvyuu.supabase.co";
 
-// Paste your Supabase PUBLISHABLE key below.
-// It starts with: sb_publishable_
-// DO NOT use the sb_secret_ key.
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_iQ0yLcTBwlyepEz1R1zJ6A_mGKjMhjt";
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_iQ0yLcTBwlyepEz1R1zJ6A_mGKjMhjt";
 
 const supabaseClient = supabase.createClient(
     SUPABASE_URL,
@@ -194,7 +193,6 @@ function updateCart() {
 
 async function placeOrder() {
 
-    // Check cart
     if (cart.length === 0) {
 
         alert(
@@ -205,7 +203,6 @@ async function placeOrder() {
     }
 
 
-    // Get customer information
     const tableNumber =
         document.getElementById("table-number").value.trim();
 
@@ -216,7 +213,6 @@ async function placeOrder() {
         document.getElementById("special-instructions").value.trim();
 
 
-    // Validate table number
     if (tableNumber === "") {
 
         alert("Please enter your table number.");
@@ -225,7 +221,6 @@ async function placeOrder() {
     }
 
 
-    // Validate customer name
     if (customerName === "") {
 
         alert("Please enter your name.");
@@ -234,7 +229,6 @@ async function placeOrder() {
     }
 
 
-    // Calculate total
     let total = 0;
 
     cart.forEach(item => {
@@ -249,20 +243,19 @@ async function placeOrder() {
     // ==========================================
 
     const { error } = await supabaseClient
-    .from("Orders")
-    .insert([
-        {
-            customer_name: customerName,
-            table_number: tableNumber,
-            items: cart,
-            total: total,
-            special_instructions: specialInstructions,
-            status: "New"
-        }
-    ]);
+        .from("Orders")
+        .insert([
+            {
+                customer_name: customerName,
+                table_number: tableNumber,
+                items: cart,
+                total: total,
+                special_instructions: specialInstructions,
+                status: "New"
+            }
+        ]);
 
 
-    // Check for database error
     if (error) {
 
         console.error(
@@ -280,51 +273,13 @@ async function placeOrder() {
 
 
     // ==========================================
-    // ORDER SUCCESS
+    // SHOW CUSTOM SUCCESS POPUP
     // ==========================================
+// ==========================================
+// SHOW CUSTOM SUCCESS POPUP
+// ==========================================
 
-    let message =
-        "Order placed successfully!\n\n" +
-        "Customer: " +
-        customerName +
-        "\n" +
-        "Table: " +
-        tableNumber +
-        "\n\n" +
-        "Items:\n";
-
-
-    cart.forEach(item => {
-
-        message +=
-            item.name +
-            " × " +
-            item.quantity +
-            " = ₹" +
-            (item.price * item.quantity) +
-            "\n";
-
-    });
-
-
-    message +=
-        "\nTotal: ₹" +
-        total;
-
-
-    if (specialInstructions !== "") {
-
-        message +=
-            "\n\nSpecial Instructions:\n" +
-            specialInstructions;
-    }
-
-
-    message +=
-        "\n\nPayment: Pay at cashier";
-
-
-    const popup = document.getElementById("order-popup");
+const popup = document.getElementById("order-popup");
 
 const popupMessage =
     document.getElementById("order-popup-message");
@@ -344,19 +299,40 @@ popupMessage.textContent =
 popup.classList.add("show");
 
 
-    // Clear cart
+// ==========================================
+// CLEAR CART
+// ==========================================
+
+cart = [];
+
+updateCart();
+
+
+    // ==========================================
+    // CLEAR CART
+    // ==========================================
+
     cart = [];
 
     updateCart();
 
 
-    // Clear customer details
+    // ==========================================
+    // CLEAR CUSTOMER DETAILS
+    // ==========================================
+
     document.getElementById("table-number").value = "";
 
     document.getElementById("customer-name").value = "";
 
     document.getElementById("special-instructions").value = "";
 }
+
+
+// ==========================================
+// CLOSE ORDER POPUP
+// ==========================================
+
 function closeOrderPopup() {
 
     const popup =
