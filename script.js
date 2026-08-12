@@ -32,8 +32,11 @@ function addToCart(itemName, price) {
     );
 
     if (existingItem) {
+
         existingItem.quantity += 1;
+
     } else {
+
         cart.push({
             name: itemName,
             price: price,
@@ -84,6 +87,7 @@ function decreaseQuantity(itemName) {
     item.quantity -= 1;
 
     if (item.quantity <= 0) {
+
         cart = cart.filter(
             item => item.name !== itemName
         );
@@ -189,6 +193,7 @@ function updateCart() {
 
 async function placeOrder() {
 
+    // Check cart
     if (cart.length === 0) {
 
         alert(
@@ -198,6 +203,8 @@ async function placeOrder() {
         return;
     }
 
+
+    // Get customer information
     const tableNumber =
         document.getElementById("table-number").value.trim();
 
@@ -208,6 +215,7 @@ async function placeOrder() {
         document.getElementById("special-instructions").value.trim();
 
 
+    // Validate table number
     if (tableNumber === "") {
 
         alert("Please enter your table number.");
@@ -216,6 +224,7 @@ async function placeOrder() {
     }
 
 
+    // Validate customer name
     if (customerName === "") {
 
         alert("Please enter your name.");
@@ -224,10 +233,13 @@ async function placeOrder() {
     }
 
 
+    // Calculate total
     let total = 0;
 
     cart.forEach(item => {
+
         total += item.price * item.quantity;
+
     });
 
 
@@ -249,6 +261,7 @@ async function placeOrder() {
         ]);
 
 
+    // Check for database error
     if (error) {
 
         console.error(
@@ -266,85 +279,70 @@ async function placeOrder() {
 
 
     // ==========================================
-   // ORDER SUCCESS
-// ==========================================
+    // ORDER SUCCESS
+    // ==========================================
 
-let message =
-    "Order placed successfully!\n\n" +
-    "Customer: " +
-    customerName +
-    "\n" +
-    "Table: " +
-    tableNumber +
-    "\n\n" +
-    "Items:\n";
+    let message =
+        "Order placed successfully!\n\n" +
+        "Customer: " +
+        customerName +
+        "\n" +
+        "Table: " +
+        tableNumber +
+        "\n\n" +
+        "Items:\n";
 
-cart.forEach(item => {
+
+    cart.forEach(item => {
+
+        message +=
+            item.name +
+            " × " +
+            item.quantity +
+            " = ₹" +
+            (item.price * item.quantity) +
+            "\n";
+
+    });
+
 
     message +=
-        item.name +
-        " × " +
-        item.quantity +
-        " = ₹" +
-        (item.price * item.quantity) +
-        "\n";
-});
+        "\nTotal: ₹" +
+        total;
 
-message +=
-    "\nTotal: ₹" +
-    total;
 
-if (specialInstructions !== "") {
+    if (specialInstructions !== "") {
+
+        message +=
+            "\n\nSpecial Instructions:\n" +
+            specialInstructions;
+    }
+
 
     message +=
-        "\n\nSpecial Instructions:\n" +
-        specialInstructions;
-}
-
-message +=
-    "\n\nPayment: Pay at cashier";
+        "\n\nPayment: Pay at cashier";
 
 
-const popup =
-    document.getElementById("order-popup");
-
-const popupMessage =
-    document.getElementById("order-popup-message");
-
-popupMessage.textContent = message;
-
-popup.classList.add("show");
+    // Original working success message
+    alert(message);
 
 
-// ==========================================
-// CLEAR CART
-// ==========================================
+    // ==========================================
+    // CLEAR CART
+    // ==========================================
 
-cart = [];
+    cart = [];
 
-updateCart();
-
-
-// ==========================================
-// CLEAR CUSTOMER DETAILS
-// ==========================================
-
-document.getElementById("table-number").value = "";
-
-document.getElementById("customer-name").value = "";
-
-document.getElementById("special-instructions").value = "";
-}
+    updateCart();
 
 
-// ==========================================
-// CLOSE ORDER POPUP
-// ==========================================
+    // ==========================================
+    // CLEAR CUSTOMER DETAILS
+    // ==========================================
 
-function closeOrderPopup() {
+    document.getElementById("table-number").value = "";
 
-    const popup =
-        document.getElementById("order-popup");
+    document.getElementById("customer-name").value = "";
 
-    popup.classList.remove("show");
+    document.getElementById("special-instructions").value = "";
 }
