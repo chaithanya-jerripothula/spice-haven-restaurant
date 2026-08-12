@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f3ef;
+    color: #222;
+}
+
+/* Header */
+
+.dashboard-header {
+    background: #222;
+    color: white;
+
+    padding: 25px 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    color: #ccc;
+}
+
+/* Online Status */
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 14px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+
+    background: #35c759;
+
+    border-radius: 50%;
+}
+
+/* Main Dashboard */
+
+.dashboard {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 25px;
+}
+
+/* Dashboard Title */
+
+.dashboard-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.dashboard-title p {
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+.dashboard-title h2 {
+    font-size: 32px;
+    margin-top: 8px;
+}
+
+/* Order Count */
+
+.order-count {
+    background: white;
+
+    padding: 15px 20px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.order-count span {
+    font-size: 24px;
+    font-weight: bold;
+
+    margin-right: 8px;
+}
+
+/* Orders */
+
+.orders-container {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+/* Order Card */
+
+.order-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Order Top */
+
+.order-top {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.order-number {
+    font-size: 13px;
+    color: #777;
+}
+
+.order-top h3 {
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+/* Status */
+
+.order-status {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.order-status.new {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Customer */
+
+.customer-info {
+    padding: 18px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+/* Items */
+
+.order-items {
+    padding: 15px 0;
+}
+
+.order-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 8px 0;
+
+    color: #444;
+}
+
+/* Special Instructions */
+
+.special-note {
+    background: #f7f5f0;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    margin: 10px 0 20px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+/* Bottom */
+
+.order-bottom {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #eee;
+}
+
+.total {
+    font-size: 18px;
+}
+
+/* Buttons */
+
+.order-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.order-actions button {
+    border: none;
+
+    padding: 10px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.accept-btn {
+    background: #222;
+    color: white;
+}
+
+.complete-btn {
+    background: #e8e8e8;
+    color: #222;
+}
+
+.order-actions button:hover {
+    opacity: 0.8;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .dashboard-header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .orders-container {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .order-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+}

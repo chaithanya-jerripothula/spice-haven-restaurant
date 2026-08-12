@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Spice Haven | Restaurant Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+
+        <div>
+            <h1>Spice Haven</h1>
+            <p>Restaurant Order Dashboard</p>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Restaurant Online
+        </div>
+
+    </header>
+
+
+    <!-- Dashboard -->
+    <main class="dashboard">
+
+        <div class="dashboard-title">
+
+            <div>
+                <p>ORDERS</p>
+                <h2>Incoming Orders</h2>
+            </div>
+
+            <div class="order-count">
+                <span id="order-count">0</span>
+                Active Orders
+            </div>
+
+        </div>
+
+
+        <!-- Orders Container -->
+        <div id="orders-container" class="orders-container">
+    <p>Loading orders...</p>
+</div>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
+
+</body>
+
+</html>
