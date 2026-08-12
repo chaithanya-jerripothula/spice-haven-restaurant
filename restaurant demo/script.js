@@ -2,12 +2,11 @@
 // SUPABASE CONNECTION
 // ==========================================
 
-const SUPABASE_URL = "https://tohphrujrnfmffkpvyuu.supabase.co";
+const SUPABASE_URL =
+    "https://tohphrujrnfmffkpvyuu.supabase.co";
 
-// Paste your Supabase PUBLISHABLE key below.
-// It starts with: sb_publishable_
-// DO NOT use the sb_secret_ key.
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_iQ0yLcTBwlyepEz1R1zJ6A_mGKjMhjt";
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_iQ0yLcTBwlyepEz1R1zJ6A_mGKjMhjt";
 
 const supabaseClient = supabase.createClient(
     SUPABASE_URL,
@@ -239,7 +238,8 @@ async function placeOrder() {
 
     cart.forEach(item => {
 
-        total += item.price * item.quantity;
+        total +=
+            item.price * item.quantity;
 
     });
 
@@ -249,20 +249,23 @@ async function placeOrder() {
     // ==========================================
 
     const { error } = await supabaseClient
-    .from("Orders")
-    .insert([
-        {
-            customer_name: customerName,
-            table_number: tableNumber,
-            items: cart,
-            total: total,
-            special_instructions: specialInstructions,
-            status: "New"
-        }
-    ]);
+        .from("Orders")
+        .insert([
+            {
+                customer_name: customerName,
+                table_number: tableNumber,
+                items: cart,
+                total: total,
+                special_instructions: specialInstructions,
+                status: "New"
+            }
+        ]);
 
 
-    // Check for database error
+    // ==========================================
+    // CHECK DATABASE ERROR
+    // ==========================================
+
     if (error) {
 
         console.error(
@@ -324,16 +327,23 @@ async function placeOrder() {
         "\n\nPayment: Pay at cashier";
 
 
+    // Show normal browser success message
     alert(message);
 
 
-    // Clear cart
+    // ==========================================
+    // CLEAR CART
+    // ==========================================
+
     cart = [];
 
     updateCart();
 
 
-    // Clear customer details
+    // ==========================================
+    // CLEAR CUSTOMER DETAILS
+    // ==========================================
+
     document.getElementById("table-number").value = "";
 
     document.getElementById("customer-name").value = "";
